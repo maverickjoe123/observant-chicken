@@ -1,0 +1,61 @@
+{
+  "name": "nodejs-circuit-breaker-redhat-name",
+  "version": "3.0.1",
+  "author": "Red Hat, Inc.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "tape test/integration/*.js | tap-spec",
+    "lint": "xo",
+    "prepare": "echo 'To confirm CVE compliance, run \"npm run security-check\"' ",
+    "security-check": "nsp check",
+    "coverage": "istanbul cover tape test/*.js",
+    "prepublish": "license-reporter report -s",
+    "openshift": "nodeshift --dockerImage=registry.access.redhat.com/ubi8/nodejs-12 --metadata.out=nodeshift-metadata.json",
+    "postinstall": "license-reporter report -s && license-reporter save -s --xml licenses.xml",
+    "start": "node ."
+  },
+  "main": "./bin/www",
+  "xo": {
+    "space": 2,
+    "rules": {
+      "space-before-function-paren": [
+        "error",
+        "always"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nodeshift-starters/nodejs-circuit-breaker-redhat.git"
+  },
+  "files": [
+    "package.json",
+    "LICENSE",
+    "app.js",
+    "lib",
+    "bin",
+    "licenses"
+  ],
+  "bugs": {
+    "url": "https://github.com/nodeshift-starters/nodejs-circuit-breaker-redhat/issues"
+  },
+  "homepage": "https://github.com/nodeshift-starters/nodejs-circuit-breaker-redhat",
+  "devDependencies": {
+    "istanbul": "~0.4.5",
+    "nodeshift": "~6.0.2",
+    "nyc": "~14.1.1",
+    "tap-spec": "~5.0.0",
+    "tape": "~4.13.2",
+    "xo": "~0.25.3"
+  },
+  "description": "",
+  "keywords": [],
+  "dependencies": {
+    "body-parser": "~1.19.0",
+    "cors": "~2.8.4",
+    "express": "~4.17.1",
+    "kube-probe": "~0.4.0",
+    "license-reporter": "~1.2.2",
+    "ws": "~6.2.0"
+  }
+}

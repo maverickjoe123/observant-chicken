@@ -1,0 +1,69 @@
+{
+  "name": "nodejs-circuit-breaker-redhat-greeting",
+  "version": "3.0.1",
+  "author": "Red Hat, Inc.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "tape test/integration/*.js | tap-spec",
+    "lint": "xo",
+    "coverage": "nyc npm test",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "start": "node .",
+    "prepublish": "license-reporter report -s",
+    "openshift": "nodeshift --dockerImage=registry.access.redhat.com/ubi8/nodejs-12 --metadata.out=nodeshift-metadata.json",
+    "postinstall": "license-reporter report -s && license-reporter save -s --xml licenses.xml"
+  },
+  "main": "./bin/www",
+  "xo": {
+    "space": 2,
+    "rules": {
+      "space-before-function-paren": [
+        "error",
+        "always"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nodeshift-starters/nodejs-circuit-breaker-redhat.git"
+  },
+  "files": [
+    "package.json",
+    "LICENSE",
+    "bin",
+    "lib",
+    "public",
+    "app.js",
+    "licenses"
+  ],
+  "bugs": {
+    "url": "https://github.com/nodeshift-starters/nodejs-circuit-breaker-redhat/issues"
+  },
+  "homepage": "https://github.com/nodeshift-starters/nodejs-circuit-breaker-redhat",
+  "devDependencies": {
+    "istanbul": "~0.4.5",
+    "nodeshift": "~6.0.2",
+    "nyc": "~14.1.1",
+    "tap-spec": "~5.0.0",
+    "tape": "~4.13.2",
+    "xo": "~0.25.3"
+  },
+  "gitHubUser": "lance",
+  "description": "demonstrates a generic pattern for reporting the failure of a service and then limiting access to the failed service until it becomes available to handle requests.",
+  "keywords": [
+    "circuitbreaker",
+    "circuit",
+    "failfast",
+    "openshift",
+    "resiliency"
+  ],
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "~1.19.0",
+    "express": "~4.17.1",
+    "kube-probe": "~0.4.0",
+    "license-reporter": "~1.2.2",
+    "opossum": "~4.0.0",
+    "ws": "~6.2.0"
+  }
+}
