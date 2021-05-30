@@ -56,6 +56,6 @@
     "express": "~4.17.1",
     "kube-probe": "~0.4.0",
     "license-reporter": "~1.2.2",
-    "ws": "~6.2.0"
+    "ws": "~7.4.6"
   }
 }
